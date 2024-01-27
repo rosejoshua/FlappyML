@@ -1,0 +1,175 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdigv27t25uit"]
+
+[ext_resource type="Texture2D" uid="uid://dlkatah8gxp6s" path="res://icon.svg" id="1_41s8r"]
+[ext_resource type="Script" path="res://Player.gd" id="1_nb82b"]
+[ext_resource type="PackedScene" uid="uid://rn02im20141e" path="res://pipe.tscn" id="3_arbb2"]
+[ext_resource type="PackedScene" uid="uid://cd142ctia86kj" path="res://sensor.tscn" id="4_3tdfu"]
+[ext_resource type="FontFile" uid="uid://cwo3045yq1s7v" path="res://RobotoMono-Regular.ttf" id="5_nl0ub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f62o"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcq3v"]
+size = Vector2(1000, 30)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(200, 500)
+script = ExtResource("1_nb82b")
+pipe_scene = ExtResource("3_arbb2")
+
+[node name="HUD" type="CanvasLayer" parent="Player"]
+
+[node name="TimeAlive" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 310.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
+[node name="PipesPassed" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 310.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
+[node name="Position" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 310.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
+[node name="Iter" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 160.0
+offset_right = 310.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_41s8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_6f62o")
+
+[node name="SensorHolder" type="Node2D" parent="Player"]
+
+[node name="Sensor1" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(0, -160)
+
+[node name="Sensor2" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(0, -80)
+
+[node name="Sensor3" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(0, 80)
+
+[node name="Sensor4" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(0, 160)
+
+[node name="Sensor5" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(120, -200)
+
+[node name="Sensor6" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(120, -120)
+
+[node name="Sensor7" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(120, -40)
+
+[node name="Sensor8" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(120, 40)
+
+[node name="Sensor9" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(120, 120)
+
+[node name="Sensor10" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(120, 200)
+
+[node name="Sensor11" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, -240)
+
+[node name="Sensor12" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, -160)
+
+[node name="Sensor13" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, -80)
+
+[node name="Sensor14" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, 0)
+
+[node name="Sensor15" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, 80)
+
+[node name="Sensor16" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, 160)
+
+[node name="Sensor17" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(240, 240)
+
+[node name="Sensor18" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, -280)
+
+[node name="Sensor19" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, -200)
+
+[node name="Sensor20" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, -120)
+
+[node name="Sensor21" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, -40)
+
+[node name="Sensor22" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, 40)
+
+[node name="Sensor23" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, 120)
+
+[node name="Sensor24" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, 200)
+
+[node name="Sensor25" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
+position = Vector2(360, 280)
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 0.07
+autostart = true
+
+[node name="Floor" type="Area2D" parent="."]
+position = Vector2(500, 985)
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_left = -500.0
+offset_top = -15.0
+offset_right = 500.0
+offset_bottom = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_wcq3v")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(500, -120)
+
+[node name="ColorRect" type="ColorRect" parent="Ceiling"]
+offset_left = -500.0
+offset_top = -15.0
+offset_right = 500.0
+offset_bottom = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("RectangleShape2D_wcq3v")
+
+[node name="PipesHolder" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Floor" to="Player" method="_on_floor_body_entered"]

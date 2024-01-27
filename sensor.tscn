@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd142ctia86kj"]
+
+[ext_resource type="Script" path="res://sensor.gd" id="1_2hg6y"]
+[ext_resource type="Texture2D" uid="uid://o0jfj8rbw8n2" path="res://circle.png" id="1_k4yya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfl1f"]
+radius = 21.0
+
+[node name="Sensor" type="Node2D"]
+script = ExtResource("1_2hg6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_k4yya")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kfl1f")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

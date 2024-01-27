@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://rn02im20141e"]
+
+[ext_resource type="Script" path="res://pipe.gd" id="1_dqpk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpd18"]
+size = Vector2(100, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptpkb"]
+size = Vector2(100, 1000)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_dqpk7")
+
+[node name="TopPipe" type="Area2D" parent="."]
+position = Vector2(0, -650)
+
+[node name="ColorRect" type="ColorRect" parent="TopPipe"]
+offset_left = -50.0
+offset_top = -500.0
+offset_right = 50.0
+offset_bottom = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe"]
+shape = SubResource("RectangleShape2D_mpd18")
+
+[node name="BottomPipe" type="Area2D" parent="."]
+position = Vector2(0, 650)
+
+[node name="ColorRect" type="ColorRect" parent="BottomPipe"]
+offset_left = -50.0
+offset_top = -500.0
+offset_right = 50.0
+offset_bottom = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe"]
+shape = SubResource("RectangleShape2D_ptpkb")
+
+[connection signal="body_entered" from="TopPipe" to="." method="_on_top_pipe_body_entered"]
+[connection signal="body_entered" from="BottomPipe" to="." method="_on_bottom_pipe_body_entered"]
