@@ -23,6 +23,13 @@ pipe_scene = ExtResource("3_arbb2")
 
 [node name="HUD" type="CanvasLayer" parent="Player"]
 
+[node name="ColorRect" type="ColorRect" parent="Player/HUD"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 580.0
+offset_bottom = 330.0
+color = Color(0, 0, 0, 0.356863)
+
 [node name="TimeAlive" type="Label" parent="Player/HUD"]
 offset_left = 40.0
 offset_top = 40.0
@@ -59,7 +66,7 @@ theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
 theme_override_fonts/font = ExtResource("5_nl0ub")
 theme_override_font_sizes/font_size = 30
 
-[node name="SinceJump" type="Label" parent="Player/HUD"]
+[node name="Iter" type="Label" parent="Player/HUD"]
 offset_left = 40.0
 offset_top = 200.0
 offset_right = 310.0
@@ -68,11 +75,20 @@ theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
 theme_override_fonts/font = ExtResource("5_nl0ub")
 theme_override_font_sizes/font_size = 30
 
-[node name="Iter" type="Label" parent="Player/HUD"]
+[node name="AvgSurvive" type="Label" parent="Player/HUD"]
 offset_left = 40.0
 offset_top = 240.0
 offset_right = 310.0
 offset_bottom = 284.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
+[node name="MaxSurvive" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 280.0
+offset_right = 310.0
+offset_bottom = 324.0
 theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
 theme_override_fonts/font = ExtResource("5_nl0ub")
 theme_override_font_sizes/font_size = 30
@@ -90,76 +106,37 @@ shape = SubResource("RectangleShape2D_6f62o")
 position = Vector2(0, -160)
 
 [node name="Sensor2" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(0, -80)
+position = Vector2(0, -60)
 
 [node name="Sensor3" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(0, 80)
+position = Vector2(0, 60)
 
 [node name="Sensor4" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
 position = Vector2(0, 160)
 
 [node name="Sensor5" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(120, -200)
+position = Vector2(140, -200)
 
 [node name="Sensor6" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(120, -120)
+position = Vector2(140, -70)
 
 [node name="Sensor7" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(120, -40)
+position = Vector2(140, 70)
 
 [node name="Sensor8" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(120, 40)
+position = Vector2(140, 200)
 
 [node name="Sensor9" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(120, 120)
+position = Vector2(280, -240)
 
 [node name="Sensor10" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(120, 200)
+position = Vector2(280, -80)
 
 [node name="Sensor11" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, -240)
+position = Vector2(280, 80)
 
 [node name="Sensor12" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, -160)
-
-[node name="Sensor13" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, -80)
-
-[node name="Sensor14" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, 0)
-
-[node name="Sensor15" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, 80)
-
-[node name="Sensor16" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, 160)
-
-[node name="Sensor17" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(240, 240)
-
-[node name="Sensor18" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, -280)
-
-[node name="Sensor19" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, -200)
-
-[node name="Sensor20" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, -120)
-
-[node name="Sensor21" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, -40)
-
-[node name="Sensor22" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, 40)
-
-[node name="Sensor23" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, 120)
-
-[node name="Sensor24" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, 200)
-
-[node name="Sensor25" parent="Player/SensorHolder" instance=ExtResource("4_3tdfu")]
-position = Vector2(360, 280)
+position = Vector2(280, 240)
 
 [node name="Timer" type="Timer" parent="Player"]
 wait_time = 0.07
