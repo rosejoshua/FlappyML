@@ -27,7 +27,7 @@ pipe_scene = ExtResource("3_arbb2")
 offset_left = 30.0
 offset_top = 30.0
 offset_right = 580.0
-offset_bottom = 330.0
+offset_bottom = 410.0
 color = Color(0, 0, 0, 0.356863)
 
 [node name="TimeAlive" type="Label" parent="Player/HUD"]
@@ -93,6 +93,24 @@ theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
 theme_override_fonts/font = ExtResource("5_nl0ub")
 theme_override_font_sizes/font_size = 30
 
+[node name="PacketsSent" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 320.0
+offset_right = 310.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
+[node name="PacketsReceived" type="Label" parent="Player/HUD"]
+offset_left = 40.0
+offset_top = 360.0
+offset_right = 310.0
+offset_bottom = 404.0
+theme_override_colors/font_color = Color(1, 0, 0.980392, 1)
+theme_override_fonts/font = ExtResource("5_nl0ub")
+theme_override_font_sizes/font_size = 30
+
 [node name="PlayerSprite" type="Sprite2D" parent="Player"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_41s8r")
@@ -142,9 +160,9 @@ position = Vector2(280, 240)
 wait_time = 0.07
 autostart = true
 
-[node name="UdpClient" parent="Player" instance=ExtResource("6_73lgj")]
-
 [node name="Environment" parent="Player" instance=ExtResource("7_holou")]
+
+[node name="UdpClient" parent="Player" instance=ExtResource("6_73lgj")]
 
 [node name="Floor" type="Area2D" parent="."]
 position = Vector2(500, 985)
