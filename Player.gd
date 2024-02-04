@@ -48,9 +48,11 @@ var states_and_hypotheses:Dictionary
 var iteration_decisions:Dictionary
 var packets_sent
 var packets_received
-
+var id
 
 func _ready():
+	id = rng.randi_range(1,999999)
+	get_window().title += " - id:" + str(id)
 	packets_sent = 0
 	packets_received = 0
 	pipe_gap = START_PIPE_GAP
@@ -75,15 +77,19 @@ func jump():
 	velocity.y = JUMP_VELOCITY
 	
 func send_state_and_hypothesis_udp(update):
-	$UdpClient.send_msg("0," + update)
+	$UdpClient.send_msg("0," + update + "," + str(id))
 	packets_sent += 1
 	
 func send_state_timelived_jumped(state:String, timelived:float, jumped:bool):
-	$UdpClient.send_msg("1," + state + "," + str(timelived) +"," + str(jumped))
+	$UdpClient.send_msg("1," + state + "," + str(timelived) +"," + str(jumped) + "," + str(id))
 	packets_sent += 1
 	
 func send_time_lived():
-	$UdpClient.send_msg("2," + str(time_alive))
+	$UdpClient.send_msg("2," + str(time_alive) + "," + str(id))
+	packets_sent += 1
+	
+func send_dead_notice():
+	$UdpClient.send_msg("3," + str(id))
 	packets_sent += 1
 	
 func make_jump_decision() -> bool:
@@ -154,6 +160,15 @@ func die():
 func notify_collision():
 	die()
 	
+func kill_app():
+	send_dead_notice()
+	get_tree().quit() # default behavior
+	
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		send_dead_notice()
+		get_tree().quit() # default behavior
+	
 func update_hud():
 	$HUD/PipesPassed.text = NUM_PIPES_TXT + str(pipes_passed)
 	if can_update_doubles:
@@ -190,7 +205,12 @@ func _physics_process(delta):
 		if message[0] == "_":
 			packets_received += 1
 			var arr = message.split(",")
-			states_and_hypotheses[arr[1]] = float(arr[2])
+			if arr[0] == "_1":
+				states_and_hypotheses[arr[1]] = float(arr[2])
+			elif arr[0] == "_2":
+				if arr[1] == str(id):
+					kill_app()
+		
 	# Add the gravity.
 	velocity.y += gravity * delta
 	velocity.y = clampf(velocity.y, -MAX_Y_VELOCITY, MAX_Y_VELOCITY)
