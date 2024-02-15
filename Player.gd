@@ -10,7 +10,7 @@ const START_PIPE_OFFSET = (MAX_PIPE_Y_POS - MIN_PIPE_Y_POS)/4
 const MIN_PIPE_OFFSET = 20
 const START_PIPE_GAP = 400
 const MIN_PIPE_GAP = 300
-const NUM_PIPES = 4
+const NUM_PIPES = 3
 const TIME_ALIVE_TXT = "Time Alive: "
 const NUM_PIPES_TXT = "Pipes Passed: "
 const POS_TXT = "Y Position: "
@@ -51,6 +51,14 @@ var packets_received
 var id
 
 func _ready():
+	var arguments = {}
+	for argument in OS.get_cmdline_args():
+		# Parse valid command-line arguments into a dictionary
+		if argument.find("=") > -1:
+			var key_value = argument.split("=")
+			arguments[key_value[0].lstrip("--")] = key_value[1]
+			print(key_value[0])
+	
 	id = rng.randi_range(1,999999)
 	get_window().title += " - id:" + str(id)
 	packets_sent = 0
@@ -215,8 +223,8 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	velocity.y = clampf(velocity.y, -MAX_Y_VELOCITY, MAX_Y_VELOCITY)
 	# Human jump
-#	if Input.is_action_just_pressed("ui_accept"):
-#		jump()
+	if Input.is_action_just_pressed("ui_accept"):
+		jump()
 	if make_jump_decision():
 		jump()
 	
